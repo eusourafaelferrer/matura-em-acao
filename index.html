@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matura em Ação — Imersão Presencial | Prof. Rafael Ferrer</title>
+  <meta name="description" content="Leve a imersão Matura em Ação para sua cidade. Capacitação presencial de 20h sobre maturação biológica e prescrição de exercícios para crianças e adolescentes." />
+  <style>
+    /* ============================
+       RESET & BASE
+    ============================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d0f14;
+      --bg2:       #13161e;
+      --bg3:       #1a1e2a;
+      --card:      #1e2330;
+      --accent:    #2dd4bf;
+      --accent2:   #14b8a6;
+      --gold:      #f59e0b;
+      --text:      #e8eaf0;
+      --muted:     #8892a4;
+      --border:    #2a3040;
+      --white:     #ffffff;
+      --radius:    12px;
+      --radius-lg: 20px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ============================
+       TYPOGRAPHY
+    ============================ */
+    .tag {
+      display: inline-block;
+      background: rgba(45,212,191,.15);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(45,212,191,.25);
+    }
+
+    h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; line-height: 1.15; letter-spacing: -.02em; color: var(--white); }
+    h2 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; line-height: 1.2; letter-spacing: -.02em; color: var(--white); }
+    h3 { font-size: 1.2rem; font-weight: 700; color: var(--white); }
+    p  { margin-bottom: 1rem; color: var(--text); }
+
+    .accent   { color: var(--accent); }
+    .gold     { color: var(--gold); }
+    .muted    { color: var(--muted); }
+    .center   { text-align: center; }
+    .left     { text-align: left; }
+
+    /* ============================
+       LAYOUT
+    ============================ */
+    .container { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+    .container-wide { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+    section { padding: 80px 0; }
+    section + section { border-top: 1px solid var(--border); }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      section { padding: 60px 0; }
+    }
+
+    /* ============================
+       CARDS
+    ============================ */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+
+    .card-accent {
+      border-color: rgba(45,212,191,.35);
+      background: linear-gradient(135deg, var(--card) 0%, rgba(45,212,191,.05) 100%);
+    }
+
+    /* ============================
+       BUTTONS / CTA
+    ============================ */
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #000;
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 16px 36px;
+      border-radius: 100px;
+      letter-spacing: .02em;
+      transition: background .2s, transform .15s;
+      cursor: pointer;
+      border: none;
+      text-align: center;
+    }
+    .btn:hover { background: var(--accent2); transform: translateY(-2px); text-decoration: none; color: #000; }
+    .btn-lg { font-size: 1.1rem; padding: 20px 48px; }
+    .btn-block { display: block; width: 100%; max-width: 420px; margin: 0 auto; }
+
+    /* ============================
+       DIVIDER
+    ============================ */
+    .divider {
+      width: 48px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin: 20px 0 28px;
+    }
+    .divider.center { margin: 20px auto 28px; }
+
+    /* ============================
+       HERO / CAPA (SEÇÃO 1)
+    ============================ */
+    #hero {
+      background: linear-gradient(160deg, #0d0f14 0%, #0e1520 60%, #0d0f14 100%);
+      padding: 0;
+      border-top: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(45,212,191,.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 40px;
+      align-items: center;
+      min-height: 100vh;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 20px 60px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        min-height: auto;
+        padding: 80px 20px 60px;
+      }
+      .hero-inner .divider { margin: 20px auto 28px; }
+      .hero-photo { order: -1; max-width: 280px; margin: 0 auto; }
+    }
+
+    .hero-photo {
+      position: relative;
+    }
+
+    .hero-photo-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      border: 2px solid rgba(45,212,191,.3);
+      background: var(--card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 380px;
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: var(--radius-lg);
+      border: 2px dashed rgba(45,212,191,.4);
+      background: var(--card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 380px;
+    }
+
+    .photo-placeholder svg { opacity: .4; }
+    .photo-placeholder p { color: var(--muted); font-size: 13px; text-align: center; padding: 0 20px; margin: 0; }
+
+    .hero-badge {
+      position: absolute;
+      bottom: -14px; right: -14px;
+      background: var(--gold);
+      color: #000;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 10px 16px;
+      border-radius: var(--radius);
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .hero-bullets {
+      list-style: none;
+      margin: 24px 0 36px;
+    }
+    .hero-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 15px;
+      color: var(--text);
+    }
+    .hero-bullets li::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    @media (max-width: 900px) {
+      .hero-bullets li { justify-content: center; }
+    }
+
+    /* ============================
+       SEÇÃO 2 — DEFINIÇÃO
+    ============================ */
+    .definition-box {
+      background: linear-gradient(135deg, var(--bg3) 0%, rgba(45,212,191,.05) 100%);
+      border: 1px solid rgba(45,212,191,.25);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 36px 40px;
+      margin: 32px 0;
+    }
+
+    .definition-box p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin: 0;
+      color: var(--text);
+    }
+
+    /* ============================
+       SEÇÃO 3 — JUSTIFICATIVA
+    ============================ */
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 36px 0;
+    }
+    @media (max-width: 600px) { .stat-row { grid-template-columns: 1fr; } }
+
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .stat-num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+      display: block;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-label { font-size: 13px; color: var(--muted); }
+
+    /* ============================
+       SEÇÃO 4 — DIFERENCIAIS
+    ============================ */
+    .diff-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      transition: border-color .2s;
+    }
+    .diff-card:hover { border-color: rgba(45,212,191,.4); }
+    .diff-icon {
+      font-size: 2rem;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .diff-card h3 { margin-bottom: 8px; }
+    .diff-card p { font-size: 14px; color: var(--muted); margin: 0; }
+
+    /* ============================
+       SEÇÃO 5 — DORES
+    ============================ */
+    #dores { background: var(--bg2); }
+
+    .pain-list {
+      list-style: none;
+      margin: 28px 0;
+    }
+    .pain-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 15px;
+    }
+    .pain-list li:last-child { border-bottom: none; }
+    .pain-num {
+      flex-shrink: 0;
+      width: 28px; height: 28px;
+      background: rgba(45,212,191,.15);
+      border: 1px solid rgba(45,212,191,.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 800; color: var(--accent);
+      margin-top: 2px;
+    }
+
+    /* ============================
+       SEÇÃO 6 — METODOLOGIA
+    ============================ */
+    .mina-label {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--accent), #818cf8);
+      color: #000;
+      font-weight: 900;
+      font-size: 1.6rem;
+      padding: 6px 22px;
+      border-radius: 8px;
+      letter-spacing: .06em;
+      margin-bottom: 20px;
+    }
+
+    .method-steps {
+      margin: 32px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .method-step {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+    .step-number {
+      flex-shrink: 0;
+      width: 36px; height: 36px;
+      background: var(--accent);
+      color: #000;
+      font-weight: 800;
+      font-size: 15px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .step-content h3 { margin-bottom: 4px; font-size: 1rem; }
+    .step-content p { font-size: 14px; color: var(--muted); margin: 0; }
+
+    /* ============================
+       SEÇÃO 7 — CARGA HORÁRIA
+    ============================ */
+    #carga { background: var(--bg2); }
+
+    .hours-highlight {
+      background: linear-gradient(135deg, rgba(45,212,191,.12), rgba(45,212,191,.03));
+      border: 1px solid rgba(45,212,191,.3);
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .hours-big {
+      font-size: 5rem;
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .hours-sub { font-size: 1.1rem; color: var(--muted); }
+
+    .hours-breakdown {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 500px) { .hours-breakdown { grid-template-columns: 1fr; } }
+
+    .hours-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .hours-pct {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .hours-desc { font-size: 14px; color: var(--muted); }
+    .hours-desc strong { color: var(--white); display: block; margin-bottom: 2px; }
+
+    /* ============================
+       SEÇÃO 8 — DEPOIMENTOS
+    ============================ */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 36px;
+    }
+
+    .testimonial-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+    }
+    .testimonial-stars { color: var(--gold); font-size: 1rem; margin-bottom: 14px; }
+    .testimonial-text {
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: var(--text);
+      font-style: italic;
+      margin-bottom: 18px;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--bg3);
+      border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+    }
+    .author-name { font-weight: 700; font-size: 14px; color: var(--white); }
+    .author-role { font-size: 12px; color: var(--muted); }
+
+    .testimonial-placeholder {
+      background: var(--card);
+      border: 1px dashed rgba(45,212,191,.3);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* ============================
+       SEÇÃO 9 — PROFESSOR
+    ============================ */
+    #professor { background: var(--bg2); }
+
+    .professor-inner {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    @media (max-width: 700px) {
+      .professor-inner { grid-template-columns: 1fr; }
+      .prof-photo-wrap { max-width: 180px; margin: 0 auto; }
+    }
+
+    .prof-photo-wrap {
+      position: relative;
+    }
+    .prof-photo-img {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: var(--radius-lg);
+      border: 2px solid rgba(45,212,191,.3);
+      background: var(--card);
+    }
+    .prof-photo-placeholder {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: var(--radius-lg);
+      border: 2px dashed rgba(45,212,191,.3);
+      background: var(--card);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 8px;
+      color: var(--muted); font-size: 12px; text-align: center;
+    }
+
+    .credentials {
+      list-style: none;
+      margin: 20px 0;
+    }
+    .credentials li {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 14.5px;
+    }
+    .credentials li::before {
+      content: '→';
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ============================
+       SEÇÃO 10 — INVESTIMENTO
+    ============================ */
+    .investment-box {
+      background: linear-gradient(135deg, var(--card) 0%, rgba(45,212,191,.07) 100%);
+      border: 1px solid rgba(45,212,191,.3);
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    @media (max-width: 500px) { .investment-box { padding: 32px 20px; } }
+
+    .investment-model-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .investment-value {
+      font-size: clamp(2.4rem, 8vw, 3.6rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+      margin: 16px 0 8px;
+    }
+    .investment-value span { font-size: 1.8rem; vertical-align: super; }
+    .investment-sub {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .investment-includes {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 24px 0;
+      text-align: left;
+    }
+    .investment-includes p {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: 14px;
+    }
+    .investment-includes ul {
+      list-style: none;
+    }
+    .investment-includes li {
+      display: flex;
+      gap: 10px;
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .investment-includes li::before {
+      content: '+';
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .investment-note {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0 0 24px;
+      line-height: 1.6;
+    }
+
+    /* ============================
+       SEÇÃO 11 — FAQ
+    ============================ */
+    .faq-list { margin-top: 32px; }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 24px 0;
+    }
+    .faq-item:first-child { border-top: 1px solid var(--border); }
+
+    .faq-q {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .faq-a {
+      font-size: 14.5px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    /* ============================
+       SEÇÃO 12 — CTA FINAL
+    ============================ */
+    #cta-final {
+      background: linear-gradient(160deg, var(--bg2) 0%, var(--bg3) 100%);
+      text-align: center;
+    }
+
+    .cta-box {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .cta-bullets {
+      list-style: none;
+      margin: 28px auto 36px;
+      text-align: left;
+      max-width: 440px;
+    }
+    .cta-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 15px;
+    }
+    .cta-bullets li::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    /* ============================
+       NAVBAR FIXO (opcional)
+    ============================ */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(13,15,20,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .navbar-brand {
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--white);
+      letter-spacing: -.01em;
+    }
+    .navbar-brand span { color: var(--accent); }
+    .navbar-cta {
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 9px 22px;
+      border-radius: 100px;
+    }
+    .navbar-cta:hover { background: var(--accent2); text-decoration: none; color: #000; }
+
+    /* ============================
+       FOOTER
+    ============================ */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 32px 20px;
+      text-align: center;
+    }
+    footer p { font-size: 13px; color: var(--muted); margin: 0; }
+
+    /* ============================
+       SECTION HEADERS
+    ============================ */
+    .section-header { margin-bottom: 12px; }
+    .section-header h2 { margin-bottom: 0; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-brand">Matura <span>em Ação</span></div>
+    <a href="#investimento" class="navbar-cta">Quero Organizar</a>
+  </nav>
+
+  <!-- ============================================================
+       SEÇÃO 1 — HERO / CAPA
+  ============================================================ -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="tag">Imersão Presencial · Método MINA+</div>
+        <h1>
+          Leve a Imersão <span class="accent">Matura em Ação</span>
+          para Sua Cidade
+        </h1>
+        <div class="divider"></div>
+        <p style="font-size:1.1rem; color:var(--muted); max-width:560px;">
+          Capacitação presencial de 20h sobre maturação biológica e prescrição
+          de exercícios para profissionais que atuam com crianças e adolescentes.
+          75% prática. 100% baseado em evidências científicas atualizadas
+          e na experiência prática em diferentes contextos.
+        </p>
+        <div style="display:flex; flex-wrap:wrap; gap:8px; margin:16px 0 0;">
+          <span style="background:var(--bg3); border:1px solid var(--border);
+                       border-radius:6px; padding:5px 12px; font-size:12px;
+                       color:var(--muted);">🏆 PSG Academy Florianópolis</span>
+          <span style="background:var(--bg3); border:1px solid var(--border);
+                       border-radius:6px; padding:5px 12px; font-size:12px;
+                       color:var(--muted);">🥇 Jogos Olímpicos Rio 2016</span>
+          <span style="background:var(--bg3); border:1px solid var(--border);
+                       border-radius:6px; padding:5px 12px; font-size:12px;
+                       color:var(--muted);">🇧🇷 Seleção Brasileira de Padel</span>
+          <span style="background:var(--bg3); border:1px solid var(--border);
+                       border-radius:6px; padding:5px 12px; font-size:12px;
+                       color:var(--muted);">🏛️ Vice-pres. SONAFE Brasil</span>
+          <span style="background:var(--bg3); border:1px solid var(--border);
+                       border-radius:6px; padding:5px 12px; font-size:12px;
+                       color:var(--muted);">📚 Mestre em Ed. Física</span>
+          <span style="background:var(--bg3); border:1px solid var(--border);
+                       border-radius:6px; padding:5px 12px; font-size:12px;
+                       color:var(--muted);">⏱️ 24 anos de experiência</span>
+        </div>
+
+        <ul class="hero-bullets">
+          <li>Imersão com carga horária de 20h — certificada</li>
+          <li>75% de atividades práticas com casos reais</li>
+          <li>Metodologia exclusiva MINA+ (único no Brasil)</li>
+          <li>Investimento acessível — você define o ingresso</li>
+          <li>Materiais exclusivos incluídos para os participantes</li>
+        </ul>
+
+        <div style="display:flex; flex-wrap:wrap; gap:12px;">
+          <a href="https://wa.me/5555984253252?text=Ol%C3%A1%20Rafael%2C%20quero%20organizar%20a%20Matura%20em%20A%C3%A7%C3%A3o%20na%20minha%20cidade"
+             target="_blank" class="btn btn-lg" style="background:#25d366;">💬 WhatsApp →</a>
+          <a href="#investimento" class="btn btn-lg" style="background:transparent;
+             border:2px solid var(--accent); color:var(--accent);">Ver proposta completa</a>
+        </div>
+      </div>
+
+      <div class="hero-photo">
+        <img src="foto-rafael.jpg" alt="Prof. Rafael Ferrer"
+             style="width:100%; aspect-ratio:3/4; object-fit:cover;
+                    object-position:center top;
+                    border-radius:20px;
+                    border:2px solid rgba(45,212,191,.3);
+                    display:block;" />
+        <div class="hero-badge" style="background:none; border:none; padding:0; bottom:-18px; right:-18px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 90 90">
+            <polygon points="45,4 86,30 86,60 45,86 4,60 4,30"
+                     fill="#f59e0b" stroke="#0d0f14" stroke-width="2"/>
+            <text x="45" y="38" text-anchor="middle"
+                  font-family="Inter,-apple-system,sans-serif"
+                  font-weight="900" font-size="11" fill="#000" letter-spacing="1">MÉTODO</text>
+            <text x="45" y="56" text-anchor="middle"
+                  font-family="Inter,-apple-system,sans-serif"
+                  font-weight="900" font-size="17" fill="#000" letter-spacing="1">MINA+</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SEÇÃO 2 — O QUE É MATURAÇÃO BIOLÓGICA
+  ============================================================ -->
+  <section id="definicao">
+    <div class="container">
+      <div class="section-header center">
+        <div class="tag">Entenda o Conceito</div>
+        <h2>O que é <span class="accent">Maturação Biológica?</span></h2>
+        <div class="divider center"></div>
+      </div>
+
+      <div class="definition-box">
+        <p>
+          Maturação biológica é o <strong>processo pelo qual o organismo progride
+          em direção ao estado adulto maduro</strong>, abrangendo os sistemas
+          somático, hormonal e esquelético. Ela determina em que estágio de
+          desenvolvimento físico cada criança ou adolescente se encontra —
+          independentemente da idade cronológica.
+        </p>
+        <br>
+        <p>
+          Dois jovens com a mesma idade podem ter maturidades biológicas
+          completamente diferentes, o que impacta diretamente sua capacidade
+          física, resposta ao treinamento e risco de lesão. Ignorar esse fator
+          é um dos erros mais comuns — e mais perigosos — da prática clínica
+          e esportiva com essa população.
+        </p>
+      </div>
+
+      <div class="grid-2" style="gap:20px; margin-top:20px;">
+        <div class="card card-accent">
+          <h3 style="margin-bottom:8px;">🦴 Maturação Esquelética</h3>
+          <p style="color:var(--muted); font-size:14px; margin:0;">
+            Avalia o desenvolvimento ósseo por meio de radiografias ou
+            estimativas clínicas. Referência mais precisa da idade biológica.
+          </p>
+        </div>
+        <div class="card card-accent">
+          <h3 style="margin-bottom:8px;">💪 Maturação Somática</h3>
+          <p style="color:var(--muted); font-size:14px; margin:0;">
+            Considera estatura, massa corporal e estágio de desenvolvimento
+            físico geral. Avaliação prática e acessível no campo.
+          </p>
+        </div>
+        <div class="card card-accent">
+          <h3 style="margin-bottom:8px;">🔬 Maturação Sexual</h3>
+          <p style="color:var(--muted); font-size:14px; margin:0;">
+            Baseada nos estágios de Tanner, avalia o desenvolvimento das
+            características sexuais secundárias. Essencial para compreender
+            o pico de crescimento.
+          </p>
+        </div>
+        <div class="card card-accent">
+          <h3 style="margin-bottom:8px;">📊 Por que importa?</h3>
+          <p style="color:var(--muted); font-size:14px; margin:0;">
+            Determina a interpretação correta de testes físicos, a prescrição
+            segura de exercícios e a individualização real do treinamento
+            para cada jovem atleta ou paciente.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SEÇÃO 3 — JUSTIFICATIVA
+  ============================================================ -->
+  <section id="justificativa" style="background:var(--bg2);">
+    <div class="container">
+      <div class="section-header center">
+        <div class="tag">Por Que Isso Importa</div>
+        <h2>A <span class="accent">lacuna</span> que ninguém está preenchendo</h2>
+        <div class="divider center"></div>
+      </div>
+
+      <p style="font-size:1.05rem; text-align:center; max-width:640px; margin:0 auto 36px; color:var(--muted);">
+        A maioria das formações em saúde e esporte ensina
+        protocolos para adultos. Quando o assunto são crianças
+        e adolescentes, o profissional fica à própria sorte.
+      </p>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <span class="stat-num">2–5</span>
+          <span class="stat-label">anos de diferença na maturação biológica entre jovens da mesma turma</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">24</span>
+          <span class="stat-label">anos de experiência do criador do método com jovens no esporte, escola, clube e clínica</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">1</span>
+          <span class="stat-label">método exclusivo no Brasil que integra maturação + testes físicos + prescrição (MINA+)</span>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:8px; border-color:rgba(245,158,11,.25);">
+        <p style="margin:0; font-size:15px; line-height:1.75;">
+          <strong class="gold">O resultado?</strong> Profissionais aplicam testes normativos indevidos,
+          prescrevem cargas incompatíveis com o estágio maturacional e tomam decisões
+          de seleção baseadas apenas na idade cronológica. A <strong>Matura em Ação</strong>
+          foi criada para mudar isso — com método, prática e evidência.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SEÇÃO 4 — DIFERENCIAIS
+  ============================================================ -->
+  <section id="diferenciais">
+    <div class="container-wide">
+      <div class="section-header center">
+        <div class="tag">Diferenciais</div>
+        <h2>Por que a <span class="accent">Matura em Ação</span> é diferente</h2>
+        <div class="divider center"></div>
+        <p class="muted" style="max-width:560px; margin:0 auto 40px;">
+          Não é mais um curso teórico. É uma imersão onde o profissional
+          aprende fazendo — e sai com ferramentas prontas para usar no dia seguinte.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <div class="diff-card">
+          <span class="diff-icon">🏋️</span>
+          <h3>75% Prática</h3>
+          <p>
+            A maior parte da carga horária é dedicada à aplicação real.
+            Você pratica os testes, discute casos e resolve problemas
+            junto com o professor durante a imersão.
+          </p>
+        </div>
+        <div class="diff-card">
+          <span class="diff-icon">🔬</span>
+          <h3>Evidência + Prática Diária</h3>
+          <p>
+            Cada protocolo apresentado tem respaldo científico atualizado
+            e é imediatamente traduzido para a rotina clínica e esportiva
+            do profissional.
+          </p>
+        </div>
+        <div class="diff-card">
+          <span class="diff-icon">📋</span>
+          <h3>Casos Reais</h3>
+          <p>
+            As discussões partem de situações concretas vividas no campo.
+            Sem exemplos genéricos — os casos são da realidade do profissional
+            que atua com jovens.
+          </p>
+        </div>
+        <div class="diff-card">
+          <span class="diff-icon">🧩</span>
+          <h3>Resolução de Problemas</h3>
+          <p>
+            A metodologia é baseada em resolução de problemas reais.
+            Você aprende a tomar decisões com segurança, mesmo diante
+            de situações atípicas.
+          </p>
+        </div>
+        <div class="diff-card">
+          <span class="diff-icon">📚</span>
+          <h3>Materiais Exclusivos</h3>
+          <p>
+            Cada participante recebe materiais desenvolvidos especificamente
+            para a imersão — protocolos, fichas de avaliação e guias
+            de prescrição não disponíveis em nenhum outro lugar.
+          </p>
+        </div>
+        <div class="diff-card" style="border-color:rgba(45,212,191,.35); background:linear-gradient(135deg,var(--card),rgba(45,212,191,.06));">
+          <span class="diff-icon">🎯</span>
+          <h3>Método MINA+</h3>
+          <p>
+            Metodologia exclusiva desenvolvida pelo Prof. Rafael Ferrer,
+            que integra avaliação maturacional, testes físicos e prescrição
+            de exercícios em um sistema único e coeso.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SEÇÃO 5 — DORES DO PROFISSIONAL
+  ============================================================ -->
+  <section id="dores">
+    <div class="container">
+      <div class="section-header center">
+        <div class="tag">Reconhece Isso?</div>
+        <h2>As dores de quem atua com <span class="accent">crianças e adolescentes</span></h2>
+        <div class="divider center"></div>
+      </div>
+
+      <ul class="pain-list">
+        <li>
+          <span class="pain-num">1</span>
+          <span>
+            <strong>Aplicar testes pensados para adultos em jovens</strong> — e não saber como
+            interpretar os resultados de forma ajustada ao estágio maturacional.
+          </span>
+        </li>
+        <li>
+          <span class="pain-num">2</span>
+          <span>
+            <strong>Confundir idade cronológica com idade biológica</strong> — avaliando e
+            prescrevendo como se dois jovens de 14 anos fossem iguais, quando biologicamente
+            podem ter anos de diferença.
+          </span>
+        </li>
+        <li>
+          <span class="pain-num">3</span>
+          <span>
+            <strong>Não saber identificar o pico de velocidade de crescimento</strong> — o
+            período mais crítico e mais ignorado na prescrição de exercícios para adolescentes.
+          </span>
+        </li>
+        <li>
+          <span class="pain-num">4</span>
+          <span>
+            <strong>Prescrever exercícios sem considerar o estágio maturacional</strong> —
+            expondo o jovem a riscos de lesão ou subestimando seu potencial real de
+            desenvolvimento.
+          </span>
+        </li>
+        <li>
+          <span class="pain-num">5</span>
+          <span>
+            <strong>Tomar decisões de seleção esportiva baseadas só na performance atual</strong>
+            — sem considerar que o jovem pode estar em desvantagem maturacional temporária.
+          </span>
+        </li>
+        <li>
+          <span class="pain-num">6</span>
+          <span>
+            <strong>Não ter um protocolo claro, prático e baseado em evidências</strong> —
+            para integrar avaliação maturacional à rotina real de atendimento ou treinamento.
+          </span>
+        </li>
+      </ul>
+
+      <div class="card" style="border-color:rgba(45,212,191,.3); text-align:center; padding:32px;">
+        <p style="font-size:1.1rem; margin:0; color:var(--text);">
+          Se você se identificou com pelo menos um desses pontos,
+          a <strong class="accent">Matura em Ação</strong> foi feita para o seu público.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SEÇÃO 6 — METODOLOGIA
+  ============================================================ -->
+  <section id="metodologia">
+    <div class="container">
+      <div class="section-header center">
+        <div class="tag">Metodologia</div>
+        <h2>O <span class="accent">Método MINA+</span></h2>
+        <div class="divider center"></div>
+      </div>
+
+      <div style="text-align:center; margin-bottom:36px;">
+        <div class="mina-label">MINA+</div>
+        <p class="muted" style="max-width:520px; margin:12px auto 0; font-size:14.5px;">
+          Sistema exclusivo que integra avaliação maturacional,
+          interpretação de testes e prescrição de exercícios em
+          um protocolo único, aplicável e baseado em evidências.
+        </p>
+      </div>
+
+      <div class="method-steps">
+        <div class="method-step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Status Maturacional — Sexual, Somático e Esquelético</h3>
+            <p>
+              Apresentação e aplicação dos diferentes indicadores de maturidade.
+              Como identificar o estágio correto de cada jovem usando ferramentas
+              acessíveis no campo e na clínica.
+            </p>
+          </div>
+        </div>
+
+        <div class="method-step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Interpretando o Status Maturacional</h3>
+            <p>
+              Como usar o estágio maturacional para selecionar os testes físicos
+              e funcionais adequados — e como interpretar os resultados sem errar
+              na referência normativa.
+            </p>
+          </div>
+        </div>
+
+        <div class="method-step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Aplicando Testes Físicos e Funcionais</h3>
+            <p>
+              Prática dos principais protocolos de avaliação adaptados ao estágio
+              maturacional. Casos reais, discussão em grupo e tomada de decisão
+              baseada em dados.
+            </p>
+          </div>
+        </div>
+
+        <div class="method-step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>Prescrevendo Exercícios com Segurança e Eficácia</h3>
+            <p>
+              Como estruturar a prescrição de exercícios para prevenção de lesões
+              e desenvolvimento de performance — respeitando e aproveitando
+              cada fase do crescimento.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SEÇÃO 7 — CARGA HORÁRIA
+  ============================================================ -->
+  <section id="carga">
+    <div class="container">
+      <div class="section-header center">
+        <div class="tag">Formato</div>
+        <h2>Carga Horária e <span class="accent">Formato</span></h2>
+        <div class="divider center"></div>
+      </div>
+
+      <div class="hours-highlight">
+        <span class="hours-big">20h</span>
+        <span class="hours-sub">de imersão presencial — intensiva e prática</span>
+        <p style="font-size:13px; color:var(--muted); margin:12px 0 0;">
+          100% baseado em evidências científicas atualizadas e na experiência prática em diferentes contextos
+        </p>
+      </div>
+
+      <div class="hours-breakdown">
+        <div class="hours-item">
+          <div class="hours-pct accent">75%</div>
+          <div class="hours-desc">
+            <strong>Aulas Práticas</strong>
+            Aplicação de testes, casos reais, resolução de problemas
+          </div>
+        </div>
+        <div class="hours-item">
+          <div class="hours-pct" style="color:var(--muted);">25%</div>
+          <div class="hours-desc">
+            <strong>Fundamentação Teórica</strong>
+            Evidências científicas e metodologia MINA+
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top:20px;">
+        <div class="card">
+          <h3 style="margin-bottom:10px;">📍 Modalidade</h3>
+          <p style="color:var(--muted); font-size:14px; margin:0;">
+            Presencial — realizado na cidade do organizador.
+            O Prof. Rafael Ferrer se desloca até você.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom:10px;">👥 Público-alvo</h3>
+          <p style="color:var(--muted); font-size:14px; margin:0;">
+            Fisioterapeutas, educadores físicos, preparadores físicos
+            e profissionais do esporte que atuam com crianças e adolescentes.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom:10px;">📜 Certificação</h3>
+          <p style="color:var(--muted); font-size:14px; margin:0;">
+            Certificado de participação emitido ao final da imersão
+            para todos os participantes presentes.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom:10px;">📦 Materiais</h3>
+          <p style="color:var(--muted); font-size:14px; margin:0;">
+            Materiais exclusivos desenvolvidos pelo Prof. Rafael Ferrer
+            incluídos para todos os participantes.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SEÇÃO 8 — DEPOIMENTOS
+  ============================================================ -->
+  <section id="depoimentos" style="background:var(--bg2);">
+    <div class="container-wide">
+      <div class="section-header center">
+        <div class="tag">Quem Já Participou</div>
+        <h2>O que os <span class="accent">alunos dizem</span></h2>
+        <div class="divider center"></div>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <!-- Depoimento 1 — Organizador de evento -->
+        <div class="testimonial-card" style="border-color:rgba(245,158,11,.3); background:linear-gradient(135deg,var(--card),rgba(245,158,11,.04));">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            "Muito obrigado pela parceria e por ter abrilhantado nosso evento!
+            Vc é diferenciado, fera. Parabéns por seu trabalho e muito obrigado
+            por compartilhar comigo!"
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">🤝</div>
+            <div>
+              <div class="author-name">Organizador de Evento</div>
+              <div class="author-role">Parceiro · Via WhatsApp</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Depoimento 2 — Organizadora -->
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            "Quero te agradecer de coração, o pessoal só elogios, adoraram a
+            tua explanação. Pode ter certeza que contribuiu muito para a
+            aprendizagem deles. Muito obrigada."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">👩‍⚕️</div>
+            <div>
+              <div class="author-name">Organizadora de Evento</div>
+              <div class="author-role">Profissional de Saúde · Via WhatsApp</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Depoimento 3 -->
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            "Sensacional Dr. Ferrer! Acabei de ouvir! Até anotei algumas coisas."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">📝</div>
+            <div>
+              <div class="author-name">Aluno</div>
+              <div class="author-role">Profissional de Saúde · Via WhatsApp</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Depoimento 4 — Referência espontânea -->
+        <div class="testimonial-card" style="border-color:rgba(45,212,191,.3);">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            "Veio uma demanda para avaliar uma criança praticante de futebol e
+            jiu-jitsu que irá iniciar futsal. Lembrei de quem? Da minha
+            referência em Fisioterapia Esportiva para crianças e adolescentes —
+            o Sr., hahah."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">⚽</div>
+            <div>
+              <div class="author-name">Fisioterapeuta</div>
+              <div class="author-role">Especialista em Esporte · Via WhatsApp</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Depoimento 5 — Reencontro com a profissão -->
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            "Muito obrigada por tudo. Eu sempre amei a fisioterapia, e hoje
+            consegui me encontrar de verdade. Quando estou estudando, sinto
+            sensações que há muito tempo não sentia. O senhor é incrível."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">❤️</div>
+            <div>
+              <div class="author-name">Aluna</div>
+              <div class="author-role">Fisioterapeuta · Via WhatsApp</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Depoimento 6 — Fascinação pelo tema -->
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            "Professor, eu amei. Na realidade estou fascinada com o assunto.
+            Hoje quero trabalhar apenas com jovens atletas."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">🏅</div>
+            <div>
+              <div class="author-name">Aluna</div>
+              <div class="author-role">Profissional de Saúde · Via WhatsApp</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Depoimento 7 — Colega da área -->
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            "É sempre um prazer ver você falando e, principalmente, fazendo
+            acontecer! Máximo respeito! É uma temática que tenho gostado e
+            acho muito importante — complexa e desafiadora. Parabéns pela
+            iniciativa!"
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">🎯</div>
+            <div>
+              <div class="author-name">Colega de Profissão</div>
+              <div class="author-role">Profissional de Saúde · Via WhatsApp</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Depoimento 8 — Reconhecimento como referência -->
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">
+            "Nesse assunto, como você é referência, tenho humildade em admitir
+            a minha ignorância e correr atrás. E você está ajudando e muuito
+            meu amigo. Só tenho a agradecer."
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">🙏</div>
+            <div>
+              <div class="author-name">Profissional de Saúde</div>
+              <div class="author-role">Colega · Via WhatsApp</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="muted center" style="font-size:12px; margin-top:28px; font-style:italic;">
+        Depoimentos espontâneos recebidos via WhatsApp por alunos, colegas e organizadores de eventos.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SEÇÃO 9 — PROFESSOR
+  ============================================================ -->
+  <section id="professor">
+    <div class="container">
+      <div class="section-header center">
+        <div class="tag">Quem Ministra</div>
+        <h2>Conheça o <span class="accent">Professor</span></h2>
+        <div class="divider center"></div>
+      </div>
+
+      <div class="professor-inner">
+        <div class="prof-photo-wrap">
+          <img src="foto-rafael.jpg"
+               alt="Prof. Rafael Ferrer"
+               class="prof-photo-img"
+               style="object-fit:cover; object-position:center top;" />
+        </div>
+
+        <div class="prof-content">
+          <h2 style="margin-bottom:4px;">Rafael Ferrer</h2>
+          <p class="accent" style="font-weight:700; margin-bottom:20px;">
+            Fisioterapeuta · Educador Físico · Mestre em Educação Física
+          </p>
+
+          <p>
+            Rafael Ferrer tem <strong>24 anos de experiência</strong> com crianças e
+            adolescentes no esporte — em escolas, escolinhas, clubes, grandes eventos
+            esportivos e na clínica. É criador do <strong>Método MINA+</strong> (Método de
+            Individualização do Neurodesenvolvimento Atlético), o único sistema integrado
+            de avaliação maturacional e prescrição de exercícios para jovens desenvolvido
+            no Brasil.
+          </p>
+
+          <p>
+            Atualmente atua com consultoria de jovens atletas e treinamento baseado no
+            status maturacional na <strong>Clínica Ismael Gomes</strong> (Florianópolis/SC),
+            como responsável pela gestão de saúde e performance do
+            <strong>PSG Academy Florianópolis</strong>, e como docente de graduação
+            e pós-graduação desde 2009.
+          </p>
+
+          <ul class="credentials">
+            <li>Bacharel em Fisioterapia e Licenciado em Educação Física</li>
+            <li>Especialista Profissional em Fisioterapia Esportiva</li>
+            <li>Pós-graduado em Ciência Aplicada ao Futebol e Futsal</li>
+            <li>Mestre em Educação Física — linha de pesquisa em Atividade Física e Performance</li>
+            <li>Docente de graduação e pós-graduação desde 2009</li>
+            <li>Vice-presidente da SONAFE Brasil (2024–2025)</li>
+            <li>Membro da Comissão de Esportes para Crianças e Adolescentes — SONAFE (2022–2023)</li>
+            <li>Seleção Brasileira de Padel — categorias de base (2021–2022)</li>
+            <li>Fisioterapeuta no Estádio Aquático Olímpico — Natação e Polo Aquático nos Jogos Olímpicos Rio 2016</li>
+            <li>Fisioterapeuta no ATC Open Future de Tênis — Santa Maria/RS (2010–2014)</li>
+            <li>Fisioterapeuta na Copa Mercosul de Handebol — Santa Maria/RS (2009–2017)</li>
+            <li>Fisioterapeuta no Campeonato Brasileiro de Futebol Sub-20 — Santa Maria/RS (2009)</li>
+            <li>Fisioterapeuta da equipe de Futsal Fóton Centrosul (2003–2004)</li>
+            <li>Autor do curso <em>Avaliação do Jovem Atleta</em></li>
+            <li>Autor do e-book <em>Educando os pais para criarem seus filhos saudáveis no esporte</em></li>
+            <li>Co-autor do e-book <em>Testes funcionais pré-temporada para esportes overhead</em></li>
+            <li>Autor de 2 capítulos de livros científicos sobre maturação biológica</li>
+          </ul>
+
+          <div style="display:flex; flex-wrap:wrap; gap:10px; margin:20px 0;">
+            <a href="https://doi.org/10.5935/978-65-5848-580-3.C0004" target="_blank"
+               style="display:inline-flex; align-items:center; gap:6px; background:var(--bg3);
+                      border:1px solid var(--border); border-radius:8px; padding:8px 14px;
+                      font-size:13px; color:var(--accent); text-decoration:none;">
+              📖 Capítulo 1 — DOI
+            </a>
+            <a href="https://doi.org/10.5935/978-65-5848-310-6.C0001" target="_blank"
+               style="display:inline-flex; align-items:center; gap:6px; background:var(--bg3);
+                      border:1px solid var(--border); border-radius:8px; padding:8px 14px;
+                      font-size:13px; color:var(--accent); text-decoration:none;">
+              📖 Capítulo 2 — DOI
+            </a>
+          </div>
+
+          <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:4px;">
+            <a href="mailto:ferrerk3@yahoo.com.br" style="color:var(--accent); font-size:14px;">
+              📩 ferrerk3@yahoo.com.br
+            </a>
+            <a href="https://wa.me/5555984253252" target="_blank" style="color:#25d366; font-size:14px;">
+              💬 (55) 98425-3252
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SEÇÃO 10 — INVESTIMENTO
+  ============================================================ -->
+  <section id="investimento">
+    <div class="container">
+      <div class="section-header center">
+        <div class="tag">Investimento</div>
+        <h2>Modelo de <span class="accent">Parceria</span></h2>
+        <div class="divider center"></div>
+        <p class="muted" style="max-width:520px; margin:0 auto 48px;">
+          Você organiza a imersão na sua cidade.
+          Define o ingresso de acordo com o seu mercado.
+          Eu vou até você.
+        </p>
+      </div>
+
+      <div class="investment-box">
+
+        <!-- HONORÁRIOS -->
+        <div class="investment-model-label">Honorários do professor</div>
+        <div class="investment-value"><span>R$</span>250
+          <span style="font-size:1rem; font-weight:500; color:var(--muted); vertical-align:middle;"> / aluno</span>
+        </div>
+        <div class="investment-sub">mínimo de 10 alunos · ticket final definido pelo contratante</div>
+
+        <!-- EXEMPLO RÁPIDO -->
+        <div style="background:var(--bg3); border:1px solid var(--border); border-radius:var(--radius);
+                    padding:16px 20px; margin:20px 0; text-align:left;">
+          <p style="font-size:12px; font-weight:700; color:var(--muted); text-transform:uppercase;
+                    letter-spacing:.1em; margin-bottom:10px;">Exemplo de cálculo</p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+            <div style="font-size:13px; color:var(--muted);">15 alunos</div>
+            <div style="font-size:13px; color:var(--white); font-weight:700;">R$ 3.750 para o professor</div>
+            <div style="font-size:13px; color:var(--muted);">20 alunos</div>
+            <div style="font-size:13px; color:var(--white); font-weight:700;">R$ 5.000 para o professor</div>
+          </div>
+          <p style="font-size:12px; color:var(--muted); margin:10px 0 0;">
+            O organizador define o ingresso livremente e fica com a diferença.
+          </p>
+        </div>
+
+        <div style="height:1px; background:var(--border); margin:20px 0;"></div>
+
+        <!-- ENCARGOS DO ORGANIZADOR -->
+        <div class="investment-includes">
+          <p>Custos cobertos pelo organizador</p>
+          <ul>
+            <li>Passagem aérea ou transporte até a cidade</li>
+            <li>Hospedagem durante a imersão</li>
+            <li>Alimentação durante o período de viagem</li>
+          </ul>
+        </div>
+
+        <div style="height:1px; background:var(--border); margin:20px 0;"></div>
+
+        <!-- O QUE O PROFESSOR ENTREGA -->
+        <div class="investment-includes" style="border-color:rgba(45,212,191,.25);">
+          <p style="color:var(--accent);">O que o professor entrega aos alunos</p>
+          <ul>
+            <li>Material didático exclusivo da imersão</li>
+            <li>Acesso a pasta na nuvem com artigos científicos atualizados</li>
+            <li>6 meses de acesso à Comunidade DoMINA (comunidade do MINA+)</li>
+            <li>Sorteio de 2 inscrições para o curso <em>Avaliação do Jovem Atleta</em></li>
+          </ul>
+        </div>
+
+        <!-- OFERTA ESPECIAL -->
+        <div style="background:linear-gradient(135deg,rgba(245,158,11,.12),rgba(45,212,191,.08));
+                    border:1px solid rgba(245,158,11,.3); border-radius:var(--radius);
+                    padding:20px; margin:16px 0; text-align:left;">
+          <p style="font-size:12px; font-weight:700; color:var(--gold); text-transform:uppercase;
+                    letter-spacing:.1em; margin-bottom:10px;">🎁 Oferta especial para os alunos</p>
+          <p style="font-size:14px; color:var(--text); margin-bottom:8px;">
+            Pacote <strong>MINA+ + Curso Avaliação do Jovem Atleta</strong>:
+          </p>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="display:flex; justify-content:space-between; align-items:center;
+                        background:var(--bg3); border-radius:8px; padding:10px 14px;">
+              <span style="font-size:13px; color:var(--muted);">Ticket final até R$ 500</span>
+              <span style="font-size:16px; font-weight:800; color:var(--gold);">R$ 1.497</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center;
+                        background:var(--bg3); border-radius:8px; padding:10px 14px;">
+              <span style="font-size:13px; color:var(--muted);">Ticket final R$ 501–R$ 1.000</span>
+              <span style="font-size:16px; font-weight:800; color:var(--gold);">R$ 1.997</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://wa.me/5555984253252?text=Ol%C3%A1%20Rafael%2C%20quero%20organizar%20a%20Matura%20em%20A%C3%A7%C3%A3o%20na%20minha%20cidade"
+           target="_blank" class="btn btn-lg btn-block" style="background:#25d366; margin-bottom:12px;">
+          💬 Falar pelo WhatsApp →
+        </a>
+
+        <a href="mailto:ferrerk3@yahoo.com.br?subject=Quero%20organizar%20a%20Matura%20em%20A%C3%A7%C3%A3o%20na%20minha%20cidade"
+           class="btn btn-lg btn-block" style="background:var(--bg3); color:var(--accent);
+           border:1px solid rgba(45,212,191,.35);">
+          📩 Enviar por e-mail
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SEÇÃO 11 — FAQ
+  ============================================================ -->
+  <section id="faq" style="background:var(--bg2);">
+    <div class="container">
+      <div class="section-header center">
+        <div class="tag">Dúvidas Frequentes</div>
+        <h2>Perguntas <span class="accent">e Respostas</span></h2>
+        <div class="divider center"></div>
+      </div>
+
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <div class="faq-q">Preciso ter infraestrutura especial para organizar?</div>
+          <p class="faq-a">
+            Não. A imersão é adaptável a diferentes ambientes. É necessário
+            um espaço amplo para as atividades práticas (como uma sala de aula,
+            academia ou ginásio), equipamentos básicos de avaliação física e
+            projetor/TV para as apresentações. Rafael orienta o organizador
+            sobre o que preparar antes do evento.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Quantos participantes são ideais para viabilizar a imersão?</div>
+          <p class="faq-a">
+            A imersão é viável a partir de um grupo pequeno — geralmente entre
+            15 e 30 participantes é o ponto ideal para garantir qualidade prática
+            e retorno financeiro para o organizador. Converse com Rafael sobre
+            o cenário da sua cidade para fazer a conta juntos.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">O cachê mínimo de R$2.500 é fixo ou negociável?</div>
+          <p class="faq-a">
+            O valor de R$2.500 é o mínimo para que a parceria aconteça.
+            Cidades com maior distância ou logística mais complexa podem ter
+            valores ajustados. Entre em contato para conversar sobre a sua
+            situação específica.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">A imersão precisa acontecer em um único dia?</div>
+          <p class="faq-a">
+            As 20h podem ser organizadas em um final de semana intensivo
+            (sexta à noite + sábado e/ou domingo) ou ao longo de dois
+            dias consecutivos. O formato é definido com o organizador de
+            acordo com a disponibilidade do público local.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Quem pode participar como aluno da imersão?</div>
+          <p class="faq-a">
+            Fisioterapeutas, educadores físicos e preparadores físicos
+            que atuam ou desejam atuar com crianças e adolescentes no esporte,
+            escolinhas, clubes ou clínica. A imersão é pensada para quem
+            já tem formação na área da saúde ou esporte.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Os participantes recebem certificado?</div>
+          <p class="faq-a">
+            Sim. Todos os participantes que concluírem a imersão recebem
+            certificado de participação com carga horária de 20h,
+            emitido ao final do evento.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SEÇÃO 12 — CTA FINAL
+  ============================================================ -->
+  <section id="cta-final">
+    <div class="container">
+      <div class="cta-box">
+        <div class="tag" style="margin:0 auto 16px;">Última Chamada</div>
+        <h2>Leve a <span class="accent">Matura em Ação</span> para sua cidade</h2>
+        <div class="divider center"></div>
+        <p class="muted" style="max-width:480px; margin:0 auto 24px;">
+          A imersão que os profissionais da sua região estão esperando —
+          sem precisar viajar para ter acesso ao conteúdo.
+          Você organiza, você lucra, eles evoluem.
+        </p>
+
+        <ul class="cta-bullets">
+          <li>20h de imersão presencial — 75% prática</li>
+          <li>Método MINA+ exclusivo do Prof. Rafael Ferrer</li>
+          <li>Materiais exclusivos para todos os participantes</li>
+          <li>Cachê mínimo de R$2.500 + custos de deslocamento</li>
+          <li>Você define o ingresso e fica com o saldo</li>
+        </ul>
+
+        <a href="https://wa.me/5555984253252?text=Ol%C3%A1%20Rafael%2C%20quero%20organizar%20a%20Matura%20em%20A%C3%A7%C3%A3o%20na%20minha%20cidade"
+           target="_blank" class="btn btn-lg btn-block" style="background:#25d366; margin-bottom:12px;">
+          💬 Falar pelo WhatsApp →
+        </a>
+
+        <a href="mailto:ferrerk3@yahoo.com.br?subject=Quero%20organizar%20a%20Matura%20em%20A%C3%A7%C3%A3o%20na%20minha%20cidade"
+           class="btn btn-lg btn-block" style="background:transparent;
+           border:2px solid var(--accent); color:var(--accent);">
+          📩 Enviar por e-mail
+        </a>
+
+        <p style="color:var(--muted); font-size:13px; margin-top:20px;">
+          📩 ferrerk3@yahoo.com.br &nbsp;·&nbsp; 💬 (55) 98425-3252
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Prof. Rafael Ferrer · Matura em Ação · Método MINA+</p>
+    <p style="margin-top:6px;">
+      <a href="mailto:ferrerk3@yahoo.com.br">ferrerk3@yahoo.com.br</a>
+      &nbsp;·&nbsp;
+      <a href="https://wa.me/5555984253252" target="_blank" style="color:#25d366;">
+        (55) 98425-3252
+      </a>
+    </p>
+  </footer>
+
+</body>
+</html>
